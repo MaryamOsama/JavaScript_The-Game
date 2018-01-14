@@ -2,7 +2,15 @@ function selectCharacter() {
     clearInterval(timerId);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     //canvas.removeEventListener("click", selectCharacter);
-    ctx.drawImage(welcomeImg, 0, 0);
-    ctx.font = "30px Arial";
-    ctx.strokeText("Click on Screen", 450, 225);
+<<<<<<< HEAD
+    var img=new Image();
+     img.src='img/play.png';
+    ctx.drawImage(img, 0, 0);
+=======
+    var newimg = new Image();
+    newimg.src = 'img/play.png'
+    ctx.drawImage(newimg, 0, 0);
+>>>>>>> 9e7a92dce8633b5445b813d19aa95e877e0bf124
+    //ctx.font = "30px Arial";
+    //ctx.strokeText("Click on Screen", 450, 225);
 }
