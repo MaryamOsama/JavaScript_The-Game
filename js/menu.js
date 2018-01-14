@@ -69,11 +69,6 @@ function displayMenu() {
         draw();
     }
 
-/*    function clear() {
-    	ctx.clearRect(0, 0, canvas.width, canvas.height);
-        canvas.removeEventListener("click", clear);
-
-    }*/
 
     function move() {
 
@@ -126,8 +121,10 @@ function displayMenu() {
             if (mouseX > buttonX[i] && mouseX < buttonX[i] + buttonWidth[i]) {
                 if (mouseY > buttonY[i] && mouseY < buttonY[i] + buttonHeight[i]) {
                 	console.log(mouseEvent);
-                   // canvas.addEventListener("click", selectCharacter);
-					selectCharacter();
+
+		    if(mouseY>100 && mouseY<140 ){
+                    selectCharacter();
+                     }
                     clearInterval(timerId);
                     canvas.removeEventListener("mousemove", checkPos);
                     canvas.removeEventListener("mouseup", checkClick);
