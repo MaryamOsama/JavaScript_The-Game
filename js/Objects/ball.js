@@ -1,21 +1,21 @@
-function Ball(){
-    var ballx;
-    var bally;
-    var ballRadius;
-    var style;
-    var startAngle;
-    var endAngle=Math.PI*2;
+var canvas=document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+var Ball=function(ballx,bally,radius) {
+    this.ballx=ballx;
+    this.bally=bally;
+    this.ballRadius=radius;
+    this.ballShape=new Image(this.ballx,this.bally);
+    this.ballShape.src="./img/ball1.png";
+    
 }
-Ball.prototype.drawBall(style){
+Ball.prototype.drawBall=function(){
+    
     ctx.beginPath();
-    ctx.arc(this.ballx, this.bally, this.ballRadius,this.startAngle,this.endAngle);
-    ctx.fillStyle = style;
-    ctx.fill();
+    ctx.drawImage(this.ballShape,this.ballx,this.bally,40,40)
+
+    /* ctx.arc(this.ballx,this.bally,this.ballRadius,0,Math.PI*2)
+    ctx.fillStyle="red";
+    ctx.fill(); */
     ctx.closePath();
 }
-Ball.prototype.initiate=function(bx,by,br,stAngle){
-    this.ballx=bx;
-    this.bally=by;
-    this.startAngle=stAngle;
-    this.endAngle=Math.PI*2;
-}
+
