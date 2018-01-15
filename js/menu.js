@@ -35,7 +35,7 @@ function displayMenu() {
 
 
 
-    ballImage.src = "img/ball.jpeg";
+    ballImage.src = "img/ball.png";
     bgImage.onload = function () {
         ctx.drawImage(bgImage, 0, backgroundY);
     };
@@ -120,11 +120,14 @@ function displayMenu() {
         for (i = 0; i < buttonX.length; i++) {
             if (mouseX > buttonX[i] && mouseX < buttonX[i] + buttonWidth[i]) {
                 if (mouseY > buttonY[i] && mouseY < buttonY[i] + buttonHeight[i]) {
-                	console.log(mouseEvent);
+                	//console.log(mouseEvent);
 
 		    if(mouseY>100 && mouseY<140 ){
                     selectCharacter();
                      }
+                    if(mouseY>220 && mouseY<260 ){
+                      credits(); 
+                    }
                     clearInterval(timerId);
                     canvas.removeEventListener("mousemove", checkPos);
                     canvas.removeEventListener("mouseup", checkClick);

@@ -4,7 +4,7 @@ var timerId = 0;
 
     var welcomeImg=new Image();
 
-     welcomeImg.src='img/c.jpg';
+     welcomeImg.src='img/main.jpg';
     ctx.drawImage(welcomeImg, 0, 0);
     
     canvas.addEventListener("click",displayMenu);
