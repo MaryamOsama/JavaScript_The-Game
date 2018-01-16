@@ -1,31 +1,46 @@
 function selectCharacter() {
-    clearInterval(timerId);
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    canvas.addEventListener("click", arrowClick);
-    var arrowX=0;
-    var arrowY=0;
-    var arrowWidth=80;
-    var arrowHeight=116;
+clearInterval(timerId);	
+console.log(ctx);
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+
+    var arrowWidth=117;
+    var arrowHeight=95;
     var newimg = new Image();
     newimg.src = 'img/leftwards-arrow.png'
     ctx.drawImage(newimg, 0, 0);
-
-
+   
+    var X=0; var Y=0;
+      canvas.addEventListener("click", arrowClick);              
 function arrowClick(mouseEvent) {
-
-            if (mouseX > arrowX && mouseX < arrowX + arrowWidth) {
-                if (mouseY > arrowY && mouseY < arrowY + arrowHeight) {
+    X=mouseEvent.clientX-this.offsetLeft;
+	 Y=mouseEvent.clientY-this.offsetTop
+	console.log(X);
+	
+	console.log(Y);
+	
+                        
+if (X> 0 && X < arrowWidth) {
+                if (Y > 0 && Y < arrowHeight) {
                    
-    ctx.fillText("Game developed by",150,90);
-                   // displayMenu();
-		    console.log(mouseEvent);
-                    //clearInterval(timerId);
+	console.log("hereeeeeee");
+        canvas.removeEventListener("click", arrowClick);              
+        displayMenu();
+	console.log(mouseEvent);
+        //clearInterval(timerId);
 
-                   // canvas.removeEventListener("click", arrowClick);
+
                 }
             }
         }
+
+   // var arrowX=0;
+    //var arrowY=0;
+    
+
+ 
     
 
 }

@@ -14,8 +14,8 @@ function displayMenu() {
     var creditsImage = new Image();
     var ballImage = new Image();
 
-    var backgroundY = 0;
-    var speed = 1;
+
+
 
     var buttonX = [462, 380, 419, 430];
     var buttonY = [100, 140, 180, 220];
@@ -35,42 +35,38 @@ function displayMenu() {
 
 
 
-    ballImage.src = "img/ball.png";
-    bgImage.onload = function () {
-        ctx.drawImage(bgImage, 0, backgroundY);
-    };
-    bgImage.src = "img/c.jpg";
+    //ballImage.src = "img/ball.png";
+        
+        bgImage.src = "img/c.jpg";
+        
 
-    playImage.onload = function () {
-        ctx.drawImage(playImage, buttonX[0], buttonY[0]);
-    }
-    playImage.src = "img/play.png";
-    instructImage.onload = function () {
-        ctx.drawImage(instructImage, buttonX[1], buttonY[1]);
-    }
-    instructImage.src = "img/instructions.png";
-    settingsImage.onload = function () {
-        ctx.drawImage(settingsImage, buttonX[2], buttonY[2]);
-    }
-    settingsImage.src = "img/settings.png";
-    creditsImage.onload = function () {
-        ctx.drawImage(creditsImage, buttonX[3], buttonY[3]);
-    }
-    creditsImage.src = "img/credits.png";
 
-    timerId = setInterval(update, 1000 / frames);
+         playImage.src = "img/play.png";
+         
+       
+        instructImage.src = "img/instructions.png";
+       
+   
+        settingsImage.src = "img/settings.png";
+      
+   
+        creditsImage.src = "img/credits.png";
+        
+
+
+   // timerId = setInterval(update, 1000 / frames);
 
     canvas.addEventListener("mousemove", checkPos);
     canvas.addEventListener("mouseup", checkClick);
 
-    function update() {
+    //function update() {
 
-        move();
+       // move();
         draw();
-    }
+  //  }
 
 
-    function move() {
+/*   function move() {
 
         if (ballSize == ballWidth) {
             ballRotate = -1;
@@ -79,7 +75,7 @@ function displayMenu() {
             ballRotate = 1;
         }
         ballSize += ballRotate;
-    }
+    }*/
 
     function draw() {
         ctx.drawImage(bgImage, 0, 0);
@@ -87,10 +83,10 @@ function displayMenu() {
         ctx.drawImage(instructImage, buttonX[1], buttonY[1]);
         ctx.drawImage(settingsImage, buttonX[2], buttonY[2]);
         ctx.drawImage(creditsImage, buttonX[3], buttonY[3]);
-        if (ballVisible == true) {
+        /*if (ballVisible == true) {
             ctx.drawImage(ballImage, ballX[0] - (ballSize / 2), ballY[0], ballSize, ballHeight);
             ctx.drawImage(ballImage, ballX[1] - (ballSize / 2), ballY[1], ballSize, ballHeight);
-        }
+        }*/
     }
 
     function checkPos(mouseEvent) {
@@ -101,7 +97,7 @@ function displayMenu() {
             mouseX = mouseEvent.offsetX;
             mouseY = mouseEvent.offsetY;
         }
-        for (i = 0; i < buttonX.length; i++) {
+        /*for (i = 0; i < buttonX.length; i++) {
             if (mouseX > buttonX[i] && mouseX < buttonX[i] + buttonWidth[i]) {
                 if (mouseY > buttonY[i] && mouseY < buttonY[i] + buttonHeight[i]) {
                     ballVisible = true;
@@ -113,7 +109,7 @@ function displayMenu() {
             } else {
                 ballVisible = false;
             }
-        }
+        }*/
     }
 
     function checkClick(mouseEvent) {
@@ -123,17 +119,18 @@ function displayMenu() {
                 	//console.log(mouseEvent);
 
 		    if(mouseY>100 && mouseY<140 ){
+                    canvas.removeEventListener("mousemove", checkPos);
+                    canvas.removeEventListener("mouseup", checkClick);
                     selectCharacter();
                      }
                     if(mouseY>220 && mouseY<260 ){
                       credits(); 
                     }
-                    clearInterval(timerId);
-                    canvas.removeEventListener("mousemove", checkPos);
-                    canvas.removeEventListener("mouseup", checkClick);
+                    //clearInterval(timerId);
+                    
                 }
             }
         }
     }
 }
-	
+displayMenu() ;
