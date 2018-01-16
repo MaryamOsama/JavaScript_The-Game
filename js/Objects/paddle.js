@@ -1,8 +1,8 @@
-var paddle=function (paddleWidth,paddleX,paddleHeight) {
+var paddle=function (paddleWidth,paddlex,paddleHeight) {
     
  this.paddleWidth =  paddleWidth;
  this.paddleHeight = 26;
- this.paddleX = paddleX;
+ this.paddleX = paddlex;
 
 
 }
