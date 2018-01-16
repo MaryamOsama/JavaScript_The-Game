@@ -6,18 +6,20 @@ var canvas = document.getElementById("myCanvas");
 var paddlex=(canvas.width-200)/2;
 var shape =new String();
 var shape=[
-    "111111111111111111",
-    "1 2121 2121 1212 1",
-    "1  21   21   21  1",
-    "1  21   21   21  1",
-    "1  21   21   21  1",
-    "1  21   21   21  1",
-    "1 2121  21  1212 1",
-    "111111111111111111",
+    "       44444444       ",
+    "      4 111111 4      ",
+    "     4 11111111 4     ",
+    "    4 1111111111 4    ",
+    "   4111111111111114   ",
+    "   4111114444111114   ",
+    "   4111114  4111114   ",
+    "   4111114  4111114   ",
+    "   4111114  4111114   ",
+    "   4444444  4444444   ",
 ];
 var paddle1=new paddle(150,paddlex);
 var ball=new Ball(canvas.width/2-35, canvas.height-paddle1.paddleHeight-60, 30);
-var brick1=new brick(53,40,3);
+var brick1=new brick(40,35,3);
 
 var bricks=brick1.init(shape);
 var rightPressed = false;

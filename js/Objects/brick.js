@@ -1,19 +1,21 @@
 
-var canvas = document.getElementById("myCanvas");
-var ctx = canvas.getContext("2d");
 var bricks = [];
 var brickShape;
-var brick = function (width,height)
+var brick = function (width,height,padding)
 {
 	this.brickWidth=width;
     this.brickHeigth=height;
-    this.brickPadding = 5;
+    this.brickPadding =padding;
     this.brickOffsetTop =5;
     this.brickOffsetLeft =5;
 	this.brick1=new Image(this.brickWidth,this.brickHeigth);
-    this.brick1.src='img/block1.png'
+    this.brick1.src='img/brick5.png';
     this.brick2=new Image(this.brickWidth,this.brickHeigth);
-    this.brick2.src='img/block2.png'
+    this.brick2.src='img/brick6.png';
+    this.brick3=new Image(this.brickWidth,this.brickHeigth);
+    this.brick3.src='img/brick2.png'
+    this.brick4=new Image(this.brickWidth,this.brickHeigth);
+    this.brick4.src='img/brick.png';
 }
 
 
@@ -32,6 +34,12 @@ brick.prototype.init=function (shape) {
             else if (shape[i].charAt(j) ==="2") {
 
                 bricks[i][j] = { x: 0, y: 0, status: 2 };
+            }else if (shape[i].charAt(j) ==="3") {
+
+                bricks[i][j] = { x: 0, y: 0, status: 3 };
+            }else if (shape[i].charAt(j) ==="4") {
+
+                bricks[i][j] = { x: 0, y: 0, status: 4 };
             }
             else if (shape[i].charAt(j) == " ") {
                 bricks[i][j] = { x: 0, y: 0, status: 0 };
@@ -59,6 +67,14 @@ brick.prototype.drawBricks=function (bricks,shape) {
             else if(bricks[c][r].status === 2){
                 ctx.beginPath();
                 ctx.drawImage(this.brick2,brickX,brickY,this.brickWidth,this.brickHeigth);
+                ctx.closePath();
+            }else if(bricks[c][r].status === 3){
+                ctx.beginPath();
+                ctx.drawImage(this.brick3,brickX,brickY,this.brickWidth,this.brickHeigth);
+                ctx.closePath();
+            }else if(bricks[c][r].status === 4){
+                ctx.beginPath();
+                ctx.drawImage(this.brick4,brickX,brickY,this.brickWidth,this.brickHeigth);
                 ctx.closePath();
             }
         }

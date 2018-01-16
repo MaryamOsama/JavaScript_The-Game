@@ -1,17 +1,16 @@
-var canvas=document.getElementById("myCanvas");
-var ctx = canvas.getContext("2d");
+
 var Ball=function(ballx,bally,radius) {
-    this.ballx=ballx;
-    this.bally=bally;
+    this.ballX=ballx;
+    this.ballY=bally;
     this.ballRadius=radius;
-    this.ballShape=new Image(this.ballx,this.bally);
-    this.ballShape.src="./img/ball1.png";
+    this.ballShape=new Image(this.ballX,this.ballY);
+    this.ballShape.src="img/ball.png";
     
 }
 Ball.prototype.drawBall=function(){
     
     ctx.beginPath();
-    ctx.drawImage(this.ballShape,this.ballx,this.bally,40,40)
+    ctx.drawImage(this.ballShape,this.ballX,this.ballY,40,40)
 
     /* ctx.arc(this.ballx,this.bally,this.ballRadius,0,Math.PI*2)
     ctx.fillStyle="red";
