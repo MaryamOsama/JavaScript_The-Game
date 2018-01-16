@@ -3,14 +3,17 @@ function selectCharacter() {
 clearInterval(timerId);	
 console.log(ctx);
 
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+//ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 
     var arrowWidth=117;
     var arrowHeight=85;
-    var newimg = new Image();
-    newimg.src = 'img/leftwards-arrow.png'
-    ctx.drawImage(newimg, 0, 0);
+    var back = new Image();
+    back.onload = function(){
+                context.drawImage(back, buttonX[3], buttonY[3]);
+	}
+    back.src = 'img/leftwards-arrow.png'
+    ctx.drawImage(back, 0, 0);
    
     var X=0; var Y=0;
       canvas.addEventListener("click", arrowClick);              

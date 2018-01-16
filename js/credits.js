@@ -5,6 +5,9 @@ function credits()
     var newimg = new Image();
     var arrowWidth=117;
     var arrowHeight=95;
+    newimg.onload = function(){
+                context.drawImage(newimg, buttonX[3], buttonY[3]);
+	}
     newimg.src = 'img/c.jpg'
     ctx.drawImage(newimg, 0, 0);
     ctx.font = "bold italic 26px Times";
@@ -20,6 +23,9 @@ function credits()
  var arrowWidth=117;
     var arrowHeight=95;
     var img = new Image();
+    img.onload = function(){
+                context.drawImage(img, buttonX[3], buttonY[3]);
+	}
     img.src = 'img/leftwards-arrow.png'
     ctx.drawImage(img, 0, 0);
    

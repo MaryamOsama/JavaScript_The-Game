@@ -93,9 +93,13 @@ function displayMenu() {
 		    if(mouseY>100 && mouseY<140 ){
                     canvas.removeEventListener("mousemove", checkPos);
                     canvas.removeEventListener("mouseup", checkClick);
+                    ctx.clearRect(0,0,canvas.width,canvas.height);
                     selectCharacter();
                      }
                     if(mouseY>220 && mouseY<260 ){
+                    canvas.removeEventListener("mousemove", checkPos);
+                    canvas.removeEventListener("mouseup", checkClick);
+                    ctx.clearRect(0,0,canvas.width,canvas.height);
                       credits(); 
                     }
                  
@@ -105,4 +109,4 @@ function displayMenu() {
         }
     }
 }
-	
+displayMenu() ;	
