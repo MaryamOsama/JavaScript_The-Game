@@ -10,7 +10,7 @@ console.log(ctx);
     var arrowHeight=85;
     var back = new Image();
     back.onload = function(){
-                context.drawImage(back, buttonX[3], buttonY[3]);
+                ctx.drawImage(back, 0, 0);
 	}
     back.src = 'img/leftwards-arrow.png'
     ctx.drawImage(back, 0, 0);

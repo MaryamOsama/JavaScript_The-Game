@@ -37,24 +37,24 @@ function displayMenu() {
 
     
         bgImage.onload = function(){
-		context.drawImage(bgImage, 0, backgroundY);
+		ctx.drawImage(bgImage, 0, backgroundY);
 	};
         bgImage.src = "img/c.jpg";
         
         playImage.onload = function(){
-		context.drawImage(playImage, buttonX[0], buttonY[0]);
+		ctx.drawImage(playImage, buttonX[0], buttonY[0]);
 	}
         playImage.src = "img/play.png";
         instructImage.onload = function(){
-		context.drawImage(instructImage, buttonX[1], buttonY[1]);
+		ctx.drawImage(instructImage, buttonX[1], buttonY[1]);
 	}
         instructImage.src = "img/instructions.png";
         settingsImage.onload = function(){
-		context.drawImage(settingsImage, buttonX[2], buttonY[2]);
+		ctx.drawImage(settingsImage, buttonX[2], buttonY[2]);
 	}
         settingsImage.src = "img/settings.png";
         creditsImage.onload = function(){
-		context.drawImage(creditsImage, buttonX[3], buttonY[3]);
+		ctx.drawImage(creditsImage, buttonX[3], buttonY[3]);
 	}
         creditsImage.src = "img/credits.png";
         

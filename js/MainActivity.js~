@@ -5,14 +5,12 @@ function mainActivity(){
 
 timerId = 0;
     var welcomeImg=new Image();
+    welcomeImg.onload = function(){
+                ctx.drawImage(welcomeImg, 0, 0);
+	}
     welcomeImg.src='img/main.jpg';
     ctx.drawImage(welcomeImg, 0, 0);
-    var Menu = function(){
-                         canvas.removeEventListener("click",displayMenu);
-                         ctx.clearRect(0,0,canvas.width,canvas.height);
-                         displayM
-                         }  
-    canvas.addEventListener("click",Menu);
+    canvas.addEventListener("click",displayMenu);
 }
 mainActivity();
 

@@ -5,6 +5,9 @@ function mainActivity(){
 
 timerId = 0;
     var welcomeImg=new Image();
+    welcomeImg.onload = function(){
+                ctx.drawImage(welcomeImg, 0, 0);
+	}
     welcomeImg.src='img/main.jpg';
     ctx.drawImage(welcomeImg, 0, 0);
     canvas.addEventListener("click",displayMenu);
