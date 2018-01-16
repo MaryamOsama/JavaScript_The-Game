@@ -7,7 +7,7 @@ console.log(ctx);
 
 
     var arrowWidth=117;
-    var arrowHeight=95;
+    var arrowHeight=85;
     var newimg = new Image();
     newimg.src = 'img/leftwards-arrow.png'
     ctx.drawImage(newimg, 0, 0);
