@@ -1,28 +1,27 @@
 function GameProgress() {
     var score;
     var lives;
-    var badges;
-    var dx;
-    var dy;
+    var dx, dy;
+    var badgeSpeed;
+    var paddleWidth,paddleHeight,paddleX, paddleY;
+    var brickWidth,brickHeight,brickPadding,brickShape;
+    var ballX, ballY, ballRadius;
+    var badgeX,badgeY,badgeWidth,badgeType;
     //this.difficulty=difficulty;
 }
-GameProgress.prototype.drawScore=function (x,y) {
+GameProgress.prototype.drawFooter=function () {
     ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
-    ctx.fillText("Score: "+this.score, x, y);
+    ctx.fillText("Score: "+this.score, 8, 20);
+    ctx.fillText("Lives: "+this.lives, canvas.width-65, 20);
 };
-GameProgress.prototype.drawLives=function (x,y) {
-    ctx.font = "16px Arial";
-    ctx.fillStyle = "#0095DD";
-    ctx.fillText("Lives: "+this.lives, x, y);
+GameProgress.prototype.randomBadgeX=function () {
+    var min = 50, max = 1100;
+    let r = Math.floor(Math.random() * (max - min + 1) + min); //Generate Random number between 5 - 10
+    return r;
 };
-GameProgress.prototype.init=function (score,lives,badges,dx,dy){
-    this.score=score;
-    this.lives=lives;
-    this.dx=dx;
-    this.dy=dy;
-    //this.difficulty=difficulty;
-    //this.dx = 7+difficulty;
-    //this.dy = -7-difficulty;
-    this.badges=badges;
+GameProgress.prototype.randomBadgeType=function () {
+    var min = 1, max = 4;
+    let r = Math.floor(Math.random() * (max - min + 1) + min); //Generate Random number between 5 - 10
+    return r;
 };
