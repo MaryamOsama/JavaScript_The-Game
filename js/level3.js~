@@ -55,7 +55,7 @@ canvas.addEventListener('click',function () {
     flagToStart=1;
 
 },false)
-function drawlevel3(){
+function draw(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     //ctx.drawImage(image,0, 0); 
     paddle1.drawPaddle();
@@ -106,9 +106,9 @@ function drawlevel3(){
         }
             
     
- requestAnimationFrame(drawlevel3);
+ requestAnimationFrame(draw);
 }
-drawlevel3();
+draw();
 //setInterval(draw, 10);
 
 

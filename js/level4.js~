@@ -6,16 +6,16 @@ var canvas = document.getElementById("myCanvas");
 var paddlex=(canvas.width-200)/2;
 var shape =new String();
 var shape=[
-    "     111111111111     ",
-    "    12222222222221    ",
-    "   1222222222222221   ",
-    "  122222222222222221  ",
-    "   1222222222222221   ",
-    "    12222222222221    ",
-    "     111111111111     ",
-    "4 4 4 4 4 4 4 4 4 4 4 4",
-    " 4 4 4 4 4 4 4 4 4 4 4 ",
-    "4 4 4 4 4 4 4 4 4 4 4 4",
+    "       44444444       ",
+    "      4 111111 4      ",
+    "     4 11111111 4     ",
+    "    4 1111111111 4    ",
+    "   4111111111111114   ",
+    "   4111114444111114   ",
+    "   4111114  4111114   ",
+    "   4111114  4111114   ",
+    "   4111114  4111114   ",
+    "   4444444  4444444   ",
 ];
 var paddle1=new paddle(150,paddlex);
 var ball=new Ball(canvas.width/2-35, canvas.height-paddle1.paddleHeight-60, 30);
@@ -55,7 +55,7 @@ canvas.addEventListener('click',function () {
     flagToStart=1;
 
 },false)
-function drawlevel3(){
+function draw(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     //ctx.drawImage(image,0, 0); 
     paddle1.drawPaddle();
@@ -106,9 +106,9 @@ function drawlevel3(){
         }
             
     
- requestAnimationFrame(drawlevel3);
+ requestAnimationFrame(draw);
 }
-drawlevel3();
+draw();
 //setInterval(draw, 10);
 
 

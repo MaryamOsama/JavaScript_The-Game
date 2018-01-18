@@ -10,6 +10,7 @@ console.log(ctx);
     var arrowHeight=48;
     var back = new Image();
     var go = new Image();
+    var character = new Image();
     back.onload = function(){
                 ctx.drawImage(back, 0, 0);
 	}
@@ -17,12 +18,16 @@ console.log(ctx);
     ctx.drawImage(back, 0, 0);
 
     go.onload = function(){
-                ctx.drawImage(go, 972, 452);
+                ctx.drawImage(go, 972, 552);
 	}
     go.src = 'img/go.png'
-    ctx.drawImage(go,972,452);
+    ctx.drawImage(go,972,552);
 
-
+    character.onload = function(){
+                ctx.drawImage(character, 0, 100);
+	}
+    character.src = 'img/characters.png'
+    ctx.drawImage(character, 0, 100);
    
     var X=0; var Y=0;
 canvas.addEventListener("click", arrowClick);              
@@ -48,7 +53,7 @@ if (X> 0 && X < arrowWidth) {
             }
 
 if (X> 972 && X < 972+arrowWidth) {
-                if (Y > 452 && Y < 452+arrowHeight) {
+                if (Y > 552 && Y < 552+arrowHeight) {
                    
 	console.log("hereeeeeee");
         canvas.removeEventListener("click", arrowClick);              

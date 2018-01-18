@@ -4,73 +4,38 @@ function selectLevel()
 {
 ctx.clearRect(0, 0, canvas.width, canvas.height);
 	console.log("hereeeeeee2");
-var  levelImage = new Image();
-levelImage.onload = function(){
-                ctx.drawImage(levelImage, 0, 0);
-	}
-levelImage.src='img/c2.jpg';
-ctx.drawImage(levelImage,0,0);
-
-var i,xStep=150;
-for(i=0;i<4;i++){
-
 
 var  step1 = new Image();
 step1.onload = function(){
-                ctx.drawImage(step1, xStep+50, 363);
+                ctx.drawImage(step1, 0, 0);
 	}
-step1.src='img/step1.jpg';
-ctx.drawImage(step1,xStep+50,363);
+step1.src='img/bglevels.jpg';
+ctx.drawImage(step1,0,0);
 
-}
-var  step1 = new Image();
-step1.onload = function(){
-                ctx.drawImage(step1, 50, 363);
-	}
-step1.src='img/step1.jpg';
-ctx.drawImage(step1,50,363);
+ var levelX=0,levelY=0;
+ var levelWidth=134;
+ var levelHeight=109;
+canvas.addEventListener("click", levelClick);              
 
-var  step1 = new Image();
-step1.onload = function(){
-                ctx.drawImage(step1, 200, 363);
-	}
-step1.src='img/step1.jpg';
-ctx.drawImage(step1,200,363);
+function levelClick(mouseEvent) {
+    levelX=mouseEvent.clientX-this.offsetLeft;
+    levelY=mouseEvent.clientY-this.offsetTop;
+	                        
+if (levelX> 148 && levelX < 148+levelWidth) {
+                if (levelY > 460 && levelY < 460+levelHeight) {
+        canvas.removeEventListener("click", levelClick);              
+        draw();
+	      }
+            }
+        
+if (levelX> 283 && levelX < 283+levelWidth) {
+                if (levelY > 351 && levelY < 351+levelHeight) {
+        canvas.removeEventListener("click", levelClick);              
+        drawlevel2();
+	      }
+            }
 
-
-
-/*var  step2 = new Image();
-step2.onload = function(){
-                ctx.drawImage(step2, 200, 218);
-	}
-step2.src='img/step2.jpg';
-ctx.drawImage(step2,200,218);*/
-
-
-var  step1 = new Image();
-step1.onload = function(){
-                ctx.drawImage(step1, 350, 363);
-	}
-step1.src='img/step1.jpg';
-ctx.drawImage(step1,350,363);
-
-
-
-/*var  step2 = new Image();
-step2.onload = function(){
-                ctx.drawImage(step2, 350, 218);
-	}
-step2.src='img/step2.jpg';
-ctx.drawImage(step2,250,218);*/
-
-
-var  step1 = new Image();
-step1.onload = function(){
-                ctx.drawImage(step1, 500, 363);
-	}
-step1.src='img/step1.jpg';
-ctx.drawImage(step1,500,363);
-
+           }
 
 }
 selectLevel();

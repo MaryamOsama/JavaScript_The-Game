@@ -8,7 +8,7 @@ timerId = 0;
     welcomeImg.onload = function(){
                 ctx.drawImage(welcomeImg, 0, 0);
 	}
-    welcomeImg.src='img/main.jpg';
+    welcomeImg.src='img/main3.png';
     ctx.drawImage(welcomeImg, 0, 0);
     canvas.addEventListener("click",displayMenu);
 }
