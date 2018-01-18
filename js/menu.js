@@ -22,22 +22,13 @@ function displayMenu() {
     var buttonWidth = [96, 260, 182, 160];
     var buttonHeight = [40, 40, 40, 40];
 
-    var ballX = [0, 0];
-    var ballY = [0, 0];
-    var ballWidth = 35;
-    var ballHeight = 40;
-
-    var ballVisible = false;
-    var ballSize = ballWidth;
-    var ballRotate = 0;
-
-    var frames = 30;
+    
 
 
 
     
         bgImage.onload = function(){
-		ctx.drawImage(bgImage, 0, backgroundY);
+		ctx.drawImage(bgImage, 0, 0);
 	};
         bgImage.src = "img/c.jpg";
         

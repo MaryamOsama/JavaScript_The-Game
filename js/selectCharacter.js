@@ -6,17 +6,26 @@ console.log(ctx);
 //ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 
-    var arrowWidth=117;
-    var arrowHeight=85;
+    var arrowWidth=48;
+    var arrowHeight=48;
     var back = new Image();
+    var go = new Image();
     back.onload = function(){
                 ctx.drawImage(back, 0, 0);
 	}
-    back.src = 'img/leftwards-arrow.png'
+    back.src = 'img/arr.png'
     ctx.drawImage(back, 0, 0);
+
+    go.onload = function(){
+                ctx.drawImage(go, 972, 452);
+	}
+    go.src = 'img/go.png'
+    ctx.drawImage(go,972,452);
+
+
    
     var X=0; var Y=0;
-      canvas.addEventListener("click", arrowClick);              
+canvas.addEventListener("click", arrowClick);              
 function arrowClick(mouseEvent) {
     X=mouseEvent.clientX-this.offsetLeft;
 	 Y=mouseEvent.clientY-this.offsetTop
@@ -37,6 +46,21 @@ if (X> 0 && X < arrowWidth) {
 
                 }
             }
+
+if (X> 972 && X < 972+arrowWidth) {
+                if (Y > 452 && Y < 452+arrowHeight) {
+                   
+	console.log("hereeeeeee");
+        canvas.removeEventListener("click", arrowClick);              
+        selectLevel();
+	console.log(mouseEvent);
+        //clearInterval(timerId);
+
+
+                }
+            }
+
+
         }
 
    // var arrowX=0;

@@ -13,18 +13,24 @@ function credits()
     ctx.fillText("ITI intake-38 OpenSource",650,340);*/
 
     var newimg = new Image();
-    var arrowWidth=117;
-    var arrowHeight=95;
+    var credits2=new Image();
+    var arrowWidth=48;
+    var arrowHeight=48;
     newimg.onload = function(){
                 ctx.drawImage(newimg, 0, 0);
 	}
+   // credits2.onload = function(){
+                //ctx.drawImage(credits2, 50, 50);
+	//}
     newimg.src = 'img/c.jpg'
+   // credits2.src = 'img/credits3.png'
     ctx.drawImage(newimg, 0, 0);
+   // ctx.drawImage(credits2,0,0);
     var img = new Image();
     img.onload = function(){
                 ctx.drawImage(img, 0,0);
 	}
-    img.src = 'img/leftwards-arrow.png'
+    img.src = 'img/arr.png'
     ctx.drawImage(img, 0, 0);
     
 
