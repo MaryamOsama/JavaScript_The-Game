@@ -1,19 +1,17 @@
-var paddle=function (paddleWidth,paddlex,paddleHeight) {
-    
- this.paddleWidth =  paddleWidth;
- this.paddleHeight = 26;
- this.paddleX = paddlex;
-
-
+function Paddle() {
+    var paddleHeight, paddleWidth , paddleX, paddleY;
+    //this.paddleStyle = paddleStyle;
+    this.paddleImg=new Image(100,10);
+    this.paddleImg.src="img/paddle.png";
 }
+Paddle.prototype.drawPaddle=function () {
+        ctx.drawImage(this.paddleImg, this.paddleX, this.paddleY, this.paddleWidth, this.paddleHeight);
 
-paddle.prototype.drawPaddle = function(){
-    var paddleShape=new Image(this.paddleWidth,this.paddleHeight);
-    paddleShape.src="./img/paddle.png";
-    ctx.beginPath();
-    ctx.drawImage(paddleShape,this.paddleX, canvas.height-this.paddleHeight-10,this.paddleWidth, this.paddleHeight);
-    
-    ctx.closePath();
+};
+Paddle.prototype.init=function (paddleX,paddleY,paddleWidth,paddleHeight) {
+    this.paddleX=paddleX;
+    this.paddleY=paddleY;
+    this.paddleHeight = paddleHeight;
+    this.paddleWidth = paddleWidth;
 
-    
-}
+};
