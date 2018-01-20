@@ -1,3 +1,4 @@
+function level2(){
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 var flagToStart=0;
@@ -14,7 +15,7 @@ var shape=[
     "4444444444444444444444444",
     "4444444444444444444444444",
 ];
-
+//var mySound2 = new sound("video-games-general-gaming-sounds-game-over.mp3");
 var paddle1=new paddle(150,paddlex);
 var ball=new Ball(canvas.width/2-35, canvas.height-paddle1.paddleHeight-60, 30);
 var brick1=new brick(40,35,1);
@@ -25,10 +26,8 @@ var leftPressed = false;
 var image=new Image(canvas.width,canvas.height);
 image.src="img/c.jpg";
 var setup=new GameProgress();
-setup.init(0,3,0,5,-5);
- 
-
-
+setup.dx=-5;
+setup.dy=5;
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 
@@ -56,6 +55,9 @@ canvas.addEventListener('click',function () {
 function drawlevel2(){
     //console.log("2"); 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    //mySound4.stop();
+    //mySound3.stop();
+    //mySound2.play();
     //ctx.drawImage(image,0, 0); 
     paddle1.drawPaddle();
     ball.drawBall();
@@ -97,8 +99,7 @@ function drawlevel2(){
                 ball.ballX= canvas.width/2-35;
                 ball.ballY = canvas.height-paddle1.paddleHeight-60;
                 //setup.init(-3);
-               setup.dx=5;
-               setup.dy=-5;
+               
                 paddle1.paddleX = (canvas.width-paddle1.paddleWidth)/2;
             }
         }
@@ -113,5 +114,8 @@ function drawlevel2(){
     
  requestAnimationFrame(drawlevel2);
 }
+
 drawlevel2();
+}
+level2();
 //setInterval(draw, 10);

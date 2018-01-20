@@ -24,7 +24,9 @@ function displayMenu() {
 
     
 
-
+    
+        
+        
 
     
         bgImage.onload = function(){
@@ -50,7 +52,8 @@ function displayMenu() {
         creditsImage.src = "img/credits.png";
         
 
-
+        var mySound = new sound("video-games-general-gaming-sounds-game-over.mp3");
+        //mySound.play();
    
     canvas.addEventListener("mousemove", checkPos);
     canvas.addEventListener("mouseup", checkClick);
@@ -91,13 +94,15 @@ function displayMenu() {
                     canvas.removeEventListener("mousemove", checkPos);
                     canvas.removeEventListener("mouseup", checkClick);
                     ctx.clearRect(0,0,canvas.width,canvas.height);
+                    
                     selectCharacter();
                      }
                     if(mouseY>220 && mouseY<260 ){
                     canvas.removeEventListener("mousemove", checkPos);
                     canvas.removeEventListener("mouseup", checkClick);
                     ctx.clearRect(0,0,canvas.width,canvas.height);
-                      credits(); 
+                      
+                    credits(); 
                     }
                  
                     

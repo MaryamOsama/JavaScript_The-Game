@@ -1,4 +1,4 @@
-
+function level1(){
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 var flagToStart=0;
@@ -15,6 +15,7 @@ var shape=[
     "1 2121  21  1212 1",
     "111111111111111111",
 ];
+//var mySound1 = new sound("video-games-general-gaming-sounds-game-over.mp3");
 var paddle1=new paddle(150,paddlex);
 var ball=new Ball(canvas.width/2-35, canvas.height-paddle1.paddleHeight-60, 30);
 var brick1=new brick(53,40,3);
@@ -25,7 +26,8 @@ var leftPressed = false;
 var image=new Image(canvas.width,canvas.height);
 image.src="img/c.jpg";
 var setup=new GameProgress();
-setup.init(0,0,0,5,-5);
+setup.dx=-5;
+setup.dy=5;
  
 
 
@@ -53,8 +55,14 @@ canvas.addEventListener('click',function () {
     flagToStart=1;
 
 },false)
-function draw(){
+function drawlevel1(){
+
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    //mySound4.stop();
+    //mySound3.stop();
+    //mySound2.stop();
+    //mySound1.play();
+    
     //ctx.drawImage(image,0, 0); 
     paddle1.drawPaddle();
     ball.drawBall();
@@ -92,7 +100,7 @@ function draw(){
                 ball.ballX = canvas.width/2-35;
                 ball.ballY = canvas.height-paddle1.paddleHeight-60;
                 //setup.init(-3);
-                paddle.paddleX = (canvas.width-paddle.paddleWidth)/2;
+                paddle1.paddleX = (canvas.width-paddle1.paddleWidth)/2;
             //}
         }
         }
@@ -104,9 +112,11 @@ function draw(){
         }
             
     
- requestAnimationFrame(draw);
+ requestAnimationFrame(drawlevel1);
 }
-draw();
+drawlevel1();
+}
+level1();
 //setInterval(draw, 10);
 
 
