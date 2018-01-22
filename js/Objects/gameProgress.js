@@ -21,7 +21,7 @@ GameProgress.prototype.drawFooter=function () {
     ctx.fillText("Lives: "+this.lives, canvas.width-110, 25);
 };
 GameProgress.prototype.randomBadgeX=function () {
-    var min = 50, max = 1300;
+    var min = 50, max = 900;
     let r = Math.floor(Math.random() * (max - min + 1) + min); //Generate Random number between 5 - 10
     return r;
 };
