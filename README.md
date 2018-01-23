@@ -3,7 +3,7 @@
 
 
 
-							“4M-SMASH”
+							ï¿½4M-SMASHï¿½
 
 
 
@@ -65,7 +65,7 @@ Software utilities used:
 4. Graphic design (photo shop).
 
 Introduction:
-Basically our game’s target audience is making a funny easy game for gamer children and also may be Adults.
+Basically our gameï¿½s target audience is making a funny easy game for gamer children and also may be Adults.
 
 Story:
 The game starts by choosing one character from our characters (4M) and then you can start our interesting trip through our four levels.
@@ -81,7 +81,7 @@ Levels:
 The game has four levels you can choose any of them from the menu.
 
 Score:
-The score is managed by increasing a point by every touch to the brick.
+The score is managed by increasing a point by every hit between ball and brick
 
 
 How to play the game?
