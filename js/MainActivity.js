@@ -1,22 +1,24 @@
+let canvas=document.getElementById("myCanvas");
+let ctx=canvas.getContext("2d");
+canvas.width='1020';
+canvas.height='600';
+let animationId=0;
+let paused=0;
 
-var canvas = document.getElementById("myCanvas");
-var ctx = canvas.getContext("2d");
-var timerId;
-var mySound = new sound("sound/welcom.mp3");
-function mainActivity(){
-
-timerId = 0;
-    var welcomeImg=new Image();
-    welcomeImg.onload = function(){
-                ctx.drawImage(welcomeImg, 0, 0);
-               
+function start() {
+    if(sessionStorage.getItem("moveDirectToMenu")=="1") {
+        displayMenu();
+    }else if( sessionStorage.getItem("moveDirectToGame")=="1"){
+        startGame(Number(sessionStorage.getItem("level")));
     }
-
-    mySound.play();
-    welcomeImg.src='img/main3.png';
-    ctx.drawImage(welcomeImg, 0, 0);
-    canvas.addEventListener("click",displayMenu);
+    else {
+        /*ctx.font = '60pt Calibri';
+        ctx.strokeStyle = 'blue';
+        ctx.strokeText('Welcome Page ', 100, 200);*/
+        displayMenu();
+    }
 }
-mainActivity();
+    start();
+
 
 

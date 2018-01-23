@@ -1,78 +1,62 @@
 function selectCharacter() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    var char1=new Image(123,117);
+    char1.src="img/icon/selectCharacter/char1_1.png";
+    var char2=new Image(123,117);
+    char2.src="img/icon/selectCharacter/char2_1.png";
+    var char3=new Image(123,117);
+    char3.src="img/icon/selectCharacter/char3_1.png";
+    var char4=new Image(123,117);
+    char4.src="img/icon/selectCharacter/char4_1.png";
 
-clearInterval(timerId);	
-console.log(ctx);
+    var selectCharacterImg=new Image(1020,600);
+    selectCharacterImg.src="img/icon/selectCharacter/selectCharacter.png";
+    selectCharacterImg.onload=function () {
+        ctx.drawImage(selectCharacterImg,0,0);
+    };
+    canvas.addEventListener("click",clickHandler,false);
+    function clickHandler(event) {
+        var relativeX = event.clientX - canvas.offsetLeft;
+        var relativeY = event.clientY - canvas.offsetTop;
+        if(relativeY>467 && relativeY<584){
+            if(relativeX>56 && relativeX< 179){
+                canvas.removeEventListener("click",clickHandler,false);
+                canvas.removeEventListener("mousemove",mouseMoveHandler,false);
+                selectLevel("superman");
+            }else if(relativeX>341&& relativeX<464 ){
+                canvas.removeEventListener("click",clickHandler,false);
+                canvas.removeEventListener("mousemove",mouseMoveHandler,false);
+                selectLevel("spiderman");
+            }else if(relativeX>583 && relativeX<706 ){
+                canvas.removeEventListener("click",clickHandler,false);
+                canvas.removeEventListener("mousemove",mouseMoveHandler,false);
+                selectLevel("batman");
 
-//ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-
-    var arrowWidth=48;
-    var arrowHeight=48;
-    var back = new Image();
-    var go = new Image();
-    var character = new Image();
-    back.onload = function(){
-                ctx.drawImage(back, 0, 0);
-	}
-    back.src = 'img/arr.png'
-    ctx.drawImage(back, 0, 0);
-
-    go.onload = function(){
-                ctx.drawImage(go, 972, 552);
-	}
-    go.src = 'img/go.png'
-    ctx.drawImage(go,972,552);
-
-    character.onload = function(){
-                ctx.drawImage(character, 0, 100);
-	}
-    character.src = 'img/characters.png'
-    ctx.drawImage(character, 0, 100);
-   
-    var X=0; var Y=0;
-canvas.addEventListener("click", arrowClick);              
-function arrowClick(mouseEvent) {
-    X=mouseEvent.clientX-this.offsetLeft;
-	 Y=mouseEvent.clientY-this.offsetTop
-	console.log(X);
-	
-	console.log(Y);
-	
-                        
-if (X> 0 && X < arrowWidth) {
-                if (Y > 0 && Y < arrowHeight) {
-                   
-	console.log("hereeeeeee");
-        canvas.removeEventListener("click", arrowClick);              
-        displayMenu();
-	console.log(mouseEvent);
-        //clearInterval(timerId);
-
-
-                }
+            }else if(relativeX>836 && relativeX< 959) {
+                canvas.removeEventListener("click", clickHandler, false);
+                canvas.removeEventListener("mousemove", mouseMoveHandler, false);
+                selectLevel("hitman");
             }
-
-if (X> 972 && X < 972+arrowWidth) {
-                if (Y > 552 && Y < 552+arrowHeight) {
-                   
-	console.log("hereeeeeee");
-        canvas.removeEventListener("click", arrowClick);              
-        selectLevel();
-	console.log(mouseEvent);
-        //clearInterval(timerId);
-
-
-                }
-            }
-
-
         }
+    }
+    canvas.addEventListener("mousemove",mouseMoveHandler,false);
+    function mouseMoveHandler(event) {
+        var relativeX = event.clientX - canvas.offsetLeft;
+        var relativeY = event.clientY - canvas.offsetTop;
+        if(relativeY>467 && relativeY<584){
+            if(relativeX>56 && relativeX< 179){
+                ctx.drawImage(char1,56,467);
+            }else if(relativeX>341&& relativeX<464 ){
+                ctx.drawImage(char2,341,467);
+            }else if(relativeX>583 && relativeX<706 ){
+                ctx.drawImage(char3,586,466);
 
-   // var arrowX=0;
-    //var arrowY=0;
-    
-
- 
-    
+            }else if(relativeX>836 && relativeX< 959){
+                ctx.drawImage(char4,838,465);
+            }else{
+                ctx.drawImage(selectCharacterImg,0,0);
+            }
+        }
+    }
 
 }

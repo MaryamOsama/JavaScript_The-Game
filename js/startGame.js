@@ -1,3 +1,13 @@
+function keyDownHandler(e) {
+    console.log("here startgame script");
+    if(e.keyCode == 27){
+        if(paused==0){
+            paused=1;
+            pause();
+        }
+
+    }
+}
 function startGame(level){
     let setup=new GameProgress(level);
     setup.init();
@@ -15,32 +25,14 @@ function startGame(level){
     badge.init(setup.badgeX,setup.badgeY,setup.badgeWidth,setup.badgeHeight,setup.randomBadgeType());
     let rightPressed = false;
     let leftPressed = false;
+    var ballHitSound=new Audio("sound/brickHit.mp3");
+    var getBadgeSound=new Audio("sound/getBadge.mp3");
+    var gameOverSound=new Audio("sound/gameOver.mp3");
 
     document.addEventListener("keydown", keyDownHandler, false);
-    document.addEventListener("keyup", keyUpHandler, false);
-    /*canvas.addEventListener("mousemove",function (event) {
-        console.log(event);
-    });*/
-    function keyDownHandler(e) {
-        if(e.keyCode == 39) {
-            rightPressed = true;
-        }
-        else if(e.keyCode == 37) {
-            leftPressed = true;
-        }
-        if(e.keyCode == 27){
-            paused=1;
-            pause();
-        }
-    }
-    function keyUpHandler(e) {
-        if(e.keyCode == 39) {
-            rightPressed = false;
-        }
-        else if(e.keyCode == 37) {
-            leftPressed = false;
-        }
-    }
+
+
+
 
     document.addEventListener("mousemove", mouseMoveHandler, false);
     function mouseMoveHandler(e) {
@@ -67,7 +59,7 @@ function startGame(level){
                 if (ball.ballX  < b.x )
                     continue;
 
-
+                ballHitSound.play();
                 if ((setup.dx > 0) && (setup.dy > 0))
                 {
                     if (ball.ballY > b.y) {
@@ -128,12 +120,12 @@ function startGame(level){
     //the main function for starting game and moving
     function startMove() {
         if (!paused){
-            document.addEventListener("keydown",function (e) {
+            /*document.addEventListener("keydown",function (e) {
                 if(e.keyCode == 27){
                     paused=1;
                     pause();
                 }
-            },false);
+            },false);*/
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
             collisionDetection();
@@ -151,6 +143,7 @@ function startGame(level){
             if (badge.badgeY + badge.badgeHeight == canvas.height - paddle.paddleHeight) {
                 if (badge.badgeX > paddle.paddleX && badge.badgeX < paddle.paddleX + paddle.paddleWidth ||
                     badge.badgeX + badge.badgeWidth < paddle.paddleX + paddle.paddleWidth && badge.badgeX + badge.badgeWidth > paddle.paddleX) {
+                    getBadgeSound.play();
                     if (badge.badgeType == 1) {
                         setup.lives++;
                     }
@@ -198,8 +191,9 @@ function startGame(level){
                 else {
                     setup.lives--;
                     if (!setup.lives) {
-                        alert("Game Over");
-                        document.location.reload();
+                        paused=1;
+                        gameOverSound.play();
+                        gameover(setup.score);
                     }
                     else {
                         setup.reset();
