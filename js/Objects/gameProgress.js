@@ -38,8 +38,8 @@ GameProgress.prototype.reset=function (){
         this.dx=5;
         this.dy=-5;
     } else if(this.level==3){
-        this.dx=10;
-        this.dy=-10;
+        this.dx=5;
+        this.dy=-5;
     } else if(this.level==4){
         this.dx=10;
         this.dy=-10;
