@@ -1,9 +1,9 @@
-Game Design Document {GDD)
+						Game Design Document {GDD)
 
 
 
 
-“4M-SMASH”
+							“4M-SMASH”
 
 
 
@@ -79,17 +79,6 @@ In our game we have four characters where each character could represent one of 
 
 Levels:
 The game has four levels you can choose any of them from the menu.
-
-Badges:
-:when you gain this badge your paddle expands.
-
-:when you take this badge your paddle shrinks.
-
-:when you take this badge you will lose live.
-
-
-Lives:
-:when you gain this heart you will take an extra live.
 
 Score:
 The score is managed by increasing a point by every touch to the brick.
