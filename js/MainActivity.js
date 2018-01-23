@@ -4,21 +4,30 @@ canvas.width='1020';
 canvas.height='600';
 let animationId=0;
 let paused=0;
-
-function start() {
+let clickSound=new Audio("sound/clickSound.mp3");
+let menuSound=new Audio("sound/menu.mp3");
+menuSound.play();
+menuSound.loop=true;
+let menuSoundFlag=0;
+let welcomeImg=new Image();
+welcomeImg.src="img/welcome.png";
+function start(){
     if(sessionStorage.getItem("moveDirectToMenu")=="1") {
         displayMenu();
     }else if( sessionStorage.getItem("moveDirectToGame")=="1"){
         startGame(Number(sessionStorage.getItem("level")));
     }
     else {
-        /*ctx.font = '60pt Calibri';
-        ctx.strokeStyle = 'blue';
-        ctx.strokeText('Welcome Page ', 100, 200);*/
-        displayMenu();
+        document.addEventListener('keydown',keyDownHandler,false)
+        welcomeImg.onload = function(){
+            ctx.drawImage(welcomeImg,0, 0);
+        }
     }
 }
-    start();
+function keyDownHandler() {
+    displayMenu();
+}
+start();
 
 
 

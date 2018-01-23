@@ -1,4 +1,4 @@
-function gameover(score){
+function gameover(score,currentLevel){
     var looseImg =new Image(675,505);
     looseImg.src="img/icon/gameover.png";
 
@@ -13,14 +13,16 @@ function gameover(score){
         ctx.drawImage(mainBtnImg,457,435);
         ctx.font = '24pt Courier';
         ctx.strokeStyle="#8df8ff";
+        ctx.strokeText("SCORE:", 435, 310);
         ctx.strokeText(score, 552, 310);
+        ctx.strokeText("LEVEL:", 435, 360);
+        ctx.strokeText(currentLevel, 552, 360);
     };
-
     canvas.addEventListener("click",function (e) {
         var relativeX = e.clientX - canvas.offsetLeft;
         var relativeY = e.clientY - canvas.offsetTop;
-        console.log(relativeX);console.log(relativeY);
         if(relativeX> 457 && relativeX<562 && relativeY>435 && relativeY<475) {
+            clickSound.play();
             sessionStorage.setItem("moveDirectToMenu","1");
             document.location.reload();
         }
@@ -38,7 +40,10 @@ function gameover(score){
             ctx.drawImage(mainBtnImg,457,435);
             ctx.font = '24pt Courier';
             ctx.strokeStyle="#8df8ff";
+            ctx.strokeText("SCORE:", 435, 310);
             ctx.strokeText(score, 552, 310);
+            ctx.strokeText("LEVEL:", 435, 360);
+            ctx.strokeText(currentLevel, 552, 360);
         }
     },false);
 

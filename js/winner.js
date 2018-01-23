@@ -1,4 +1,8 @@
-function win(level){
+function win(score,level){
+    console.log(level);
+    var winSound=new Audio("sound/win.mp3");
+    winSound.play();
+    winSound.loop=1;
     var win=new Image(398,212);
     win.src="img/icon/win/win.png";
     var homeIcon1=new Image(48,49);
@@ -13,8 +17,16 @@ function win(level){
         ctx.drawImage(win,311,194);
         ctx.drawImage(homeIcon1,350,344);
         ctx.drawImage(next1,629,359);
+        ctx.font = '24pt Courier';
+        ctx.strokeStyle="#8df8ff";
+        ctx.strokeText("SCORE:", 435, 310);
+        ctx.strokeText(score, 552, 310);
+        ctx.strokeText("LEVEL:", 435, 360);
+        ctx.strokeText(level, 552, 360);
     };
     canvas.addEventListener("click",ClickHAndler,false);
+    canvas.addEventListener("mousemove",mouseMoveHandler);
+
     function ClickHAndler(event) {
         var relativeX = event.clientX - canvas.offsetLeft;
         var relativeY = event.clientY - canvas.offsetTop;
@@ -23,15 +35,21 @@ function win(level){
             document.location.reload();
         }else if(relativeX> 629 && relativeX< 692 && relativeY>359 && relativeY<398){
             if(level==4){
+                clickSound.play();
+                winSound.loop=false;
                 sessionStorage.setItem("moveDirectToMenu","1");
+                winSound.stop();
                 document.location.reload();
             }else {
-                console.log("here");
+                winSound.loop=false;
                 canvas.removeEventListener("click",ClickHAndler,false);
                 canvas.removeEventListener("mousemove",mouseMoveHandler);
                 level++;
                 paused=0;
+                winSound.pause();
+                clickSound.play();
                 cancelAnimationFrame(animationId);
+                console.log(level);
                 startGame(level);
                 /*sessionStorage.setItem("moveDirectToGame","1");
                 sessionStorage.setItem("level", level);
@@ -39,7 +57,7 @@ function win(level){
             }
         }
     }
-    canvas.addEventListener("mousemove",mouseMoveHandler)
+
     function mouseMoveHandler(event) {
         var relativeX = event.clientX - canvas.offsetLeft;
         var relativeY = event.clientY - canvas.offsetTop;
@@ -50,6 +68,10 @@ function win(level){
         }else{
             ctx.drawImage(homeIcon1,350,344);
             ctx.drawImage(next1,629,359);
+            ctx.strokeText("SCORE:", 435, 310);
+            ctx.strokeText(score, 552, 310);
+            ctx.strokeText("LEVEL:", 435, 360);
+            ctx.strokeText(level, 552, 360);
         }
     }
 

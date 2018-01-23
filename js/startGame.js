@@ -1,14 +1,8 @@
-function keyDownHandler(e) {
-    console.log("here startgame script");
-    if(e.keyCode == 27){
-        if(paused==0){
-            paused=1;
-            pause();
-        }
-
-    }
-}
+var winSound;
 function startGame(level){
+    winSound=new Audio("sound/win.mp3");
+    var back=new Image(30,30);
+    back.src="img/exit.png";
     let setup=new GameProgress(level);
     setup.init();
     let flagToStart=0;
@@ -28,11 +22,6 @@ function startGame(level){
     var ballHitSound=new Audio("sound/brickHit.mp3");
     var getBadgeSound=new Audio("sound/getBadge.mp3");
     var gameOverSound=new Audio("sound/gameOver.mp3");
-
-    document.addEventListener("keydown", keyDownHandler, false);
-
-
-
 
     document.addEventListener("mousemove", mouseMoveHandler, false);
     function mouseMoveHandler(e) {
@@ -59,6 +48,8 @@ function startGame(level){
                 if (ball.ballX  < b.x )
                     continue;
 
+                setup.score++;
+                console.log(setup.score);
                 ballHitSound.play();
                 if ((setup.dx > 0) && (setup.dy > 0))
                 {
@@ -99,24 +90,39 @@ function startGame(level){
                 }
                 else if(b.status == 2){
                     b.status=1;
+                    brick.numberOfBricks--;
                 }
                 else if(b.status == 3){
                     b.status=2;
+                    brick.numberOfBricks--;
                 }
                 else if(b.status == 4){
                     b.status=3;
+                    brick.numberOfBricks--;
                 }
-                setup.score++;
+
                 //sessionStorage.score=Number(sessionStorage.score)+1;
                 if(brick.numberOfBricks==0) {
                     paused=1;
-                    win(level);
+                    canvas.removeEventListener("mousemove", mouseMoveHandler, false);
+                    canvas.removeEventListener('click',clkHANdler,false);
+                    winSound.play();
+                    win(setup.score,level);
                 }
             }
         }
     }
     //adding mouse click event listener to @game_area to flag to start game
-    canvas.addEventListener('click',function () {flagToStart=1;},false)
+    canvas.addEventListener('click',clkHANdler,false)
+    function clkHANdler(event) {
+        var relativeX = event.clientX - canvas.offsetLeft;
+        var relativeY = event.clientY - canvas.offsetTop;
+        if(relativeX>0 && relativeX<30 && relativeY> 0&& relativeY <30){
+            sessionStorage.setItem("moveDirectToMenu","1");
+            document.location.reload();
+        }
+        flagToStart=1;
+    }
     //the main function for starting game and moving
     function startMove() {
         if (!paused){
@@ -133,6 +139,7 @@ function startGame(level){
             ball.drawBall();
             paddle.drawPaddle();
             setup.drawFooter();
+            ctx.drawImage(back,0,0);
             if (badge.badgeY > canvas.height + 1000) {
                 badge.init(setup.randomBadgeX(), 50, 40, 40, setup.randomBadgeType());
                 catchedBadgeFlag = 0;
@@ -148,20 +155,31 @@ function startGame(level){
                         setup.lives++;
                     }
                     else if (badge.badgeType == 2) {
-                        flagToStart = 0;
-                        ball.ballX = canvas.width / 2;
-                        ball.ballY = canvas.height - 20;
-                        paddle.paddleX = (canvas.width - paddle.paddleWidth) / 2;
-                    }
-                    else if (badge.badgeType == 3) {
                         if (paddle.paddleWidth < 40) {
+
                             setup.lives--;
-                            flagToStart = 0;
-                            paddle.paddleWidth = 100;
+                            if (!setup.lives) {
+                                setup.drawFooter();
+                                paused=1;
+                                gameOverSound.play();
+                                gameover(setup.score,setup.level);
+                            }else{
+                                flagToStart = 0;
+                                paddle.paddleWidth = 100;
+                            }
 
                         } else {
                             paddle.paddleWidth -= 10;
                         }
+                    }
+                    else if (badge.badgeType == 3) {
+                        setup.lives--;
+                        if (!setup.lives) {
+                            paused=1;
+                            gameOverSound.play();
+                            gameover(setup.score,setup.level);
+                        }
+
                     } else if (badge.badgeType == 4) {
                         if (paddle.paddleWidth > 160) {
                             setup.lives++;
@@ -193,7 +211,7 @@ function startGame(level){
                     if (!setup.lives) {
                         paused=1;
                         gameOverSound.play();
-                        gameover(setup.score);
+                        gameover(setup.score,setup.level);
                     }
                     else {
                         setup.reset();
@@ -221,7 +239,6 @@ function startGame(level){
             }
 
         }
-
         animationId = requestAnimationFrame(startMove);
 
     }

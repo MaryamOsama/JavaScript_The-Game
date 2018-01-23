@@ -7,7 +7,7 @@ Brick.prototype.drawBricks=function (bricks,shape,footerHeight) {
         for(r=0; r<shape[c].length; r++) {
             if(bricks[c][r].status == 1) {
                 var brickX = (r*(this.brickWidth+this.brickPadding));
-                var brickY = (c*(this.brickHeight+this.brickPadding))+footerHeight;
+                var brickY = (c*(this.brickHeight+this.brickPadding))//+footerHeight;
                 bricks[c][r].x = brickX;
                 bricks[c][r].y = brickY;
                 ctx.beginPath();
@@ -17,7 +17,7 @@ Brick.prototype.drawBricks=function (bricks,shape,footerHeight) {
             }
             else if(bricks[c][r].status == 2){
                 var brickX = (r*(this.brickWidth+this.brickPadding));
-                var brickY = (c*(this.brickHeight+this.brickPadding))+footerHeight;
+                var brickY = (c*(this.brickHeight+this.brickPadding))//+footerHeight;
                 bricks[c][r].x = brickX;
                 bricks[c][r].y = brickY;
                 ctx.beginPath();
@@ -27,7 +27,7 @@ Brick.prototype.drawBricks=function (bricks,shape,footerHeight) {
             }
             else if(bricks[c][r].status == 3){
                 var brickX = (r*(this.brickWidth+this.brickPadding));
-                var brickY = (c*(this.brickHeight+this.brickPadding))+footerHeight;
+                var brickY = (c*(this.brickHeight+this.brickPadding))//+footerHeight;
                 bricks[c][r].x = brickX;
                 bricks[c][r].y = brickY;
                 ctx.beginPath();
@@ -37,7 +37,7 @@ Brick.prototype.drawBricks=function (bricks,shape,footerHeight) {
             }
             else if(bricks[c][r].status == 4){
                 var brickX = (r*(this.brickWidth+this.brickPadding));
-                var brickY = (c*(this.brickHeight+this.brickPadding))+footerHeight;
+                var brickY = (c*(this.brickHeight+this.brickPadding))//+footerHeight;
                 bricks[c][r].x = brickX;
                 bricks[c][r].y = brickY;
                 ctx.beginPath();
@@ -72,15 +72,15 @@ Brick.prototype.init=function (bWidth,bHeight,bPadding,shape) {
                 bricks[i][j] = { x: 0, y: 0, status: 1 };
             }
             else if (shape[i].charAt(j) ==="2") {
-                this.numberOfBricks++;
+                this.numberOfBricks+=2;
                 bricks[i][j] = { x: 0, y: 0, status: 2 };
             }
             else if (shape[i].charAt(j) ==="3") {
-                this.numberOfBricks++;
+                this.numberOfBricks+=3;
                 bricks[i][j] = { x: 0, y: 0, status: 3 };
             }
             else if (shape[i].charAt(j) ==="4") {
-                this.numberOfBricks++;
+                this.numberOfBricks+=4;
                 bricks[i][j] = { x: 0, y: 0, status: 4 };
             }
             else if (shape[i].charAt(j) == " ") {

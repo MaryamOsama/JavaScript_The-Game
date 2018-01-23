@@ -20,31 +20,40 @@ function selectLevel(character) {
     function clickHandler(event) {
         var relativeX = event.clientX - canvas.offsetLeft;
         var relativeY = event.clientY - canvas.offsetTop;
-        if(relativeY>467 && relativeY<584){
-            if(relativeY>190 && relativeY<319){
-                canvas.removeEventListener("click",clickHandler,false);
-                canvas.removeEventListener("mousemove",mouseMoveHandler,false);
-                startGame(1);
-            }else if(relativeX>371&& relativeX<499 ){
-                canvas.removeEventListener("click",clickHandler,false);
-                canvas.removeEventListener("mousemove",mouseMoveHandler,false);
-                startGame(2);
-            }else if(relativeX>544 && relativeX<672 ){
-                canvas.removeEventListener("click",clickHandler,false);
-                canvas.removeEventListener("mousemove",mouseMoveHandler,false);
-                startGame(3);
-
-            }else if(relativeX>712 && relativeX< 840){
-                canvas.removeEventListener("click",clickHandler,false);
-                canvas.removeEventListener("mousemove",mouseMoveHandler,false);
-                startGame(4);
-            }
-        }
-        if(relativeX>45 && relativeX<45+70 && relativeY>24 && relativeY<24+44){
+        if(relativeY>190 && relativeY<319 && relativeX>188 && relativeX< 316) {
+            clickSound.play();
+            menuSound.loop=false;
+            menuSound.pause();
+            startGame(1);
             canvas.removeEventListener("click",clickHandler,false);
-                canvas.removeEventListener("mousemove",mouseMoveHandler,false);
+            canvas.removeEventListener("mousemove",mouseMoveHandler,false);
+        }else if(relativeY>190 && relativeY<319 && relativeX>371&& relativeX<499 ){
+            clickSound.play();
+            menuSound.loop=false;
+            menuSound.pause();
+            canvas.removeEventListener("click",clickHandler,false);
+            canvas.removeEventListener("mousemove",mouseMoveHandler,false);
+            startGame(2);
+        }else if(relativeY>190 && relativeY<319 && relativeX>544 && relativeX<672 ){
+            clickSound.play();
+            menuSound.pause();
+            canvas.removeEventListener("click",clickHandler,false);
+            canvas.removeEventListener("mousemove",mouseMoveHandler,false);
+            startGame(3);
+        }else if(relativeY>190 && relativeY<319 && relativeX>712 && relativeX< 840){
+            clickSound.play();
+            menuSound.loop=false;
+            menuSound.pause();
+            canvas.removeEventListener("click",clickHandler,false);
+            canvas.removeEventListener("mousemove",mouseMoveHandler,false);
+            startGame(4);
+        }else if(relativeX>45 && relativeX<45+70 && relativeY>24 && relativeY<24+44){
+            clickSound.play();
+            canvas.removeEventListener("click",clickHandler,false);
+            canvas.removeEventListener("mousemove",mouseMoveHandler,false);
             selectCharacter();
         }
+
 
     }
     canvas.addEventListener("mousemove",mouseMoveHandler,false);

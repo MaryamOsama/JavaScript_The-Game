@@ -1,114 +1,78 @@
-function displayMenu() {
-    //canvas.removeEventListener("click",displayMenu);
+function displayMenu(){
+    document.removeEventListener('keydown',keyDownHandler,false);
     ctx.clearRect(0,0,canvas.width,canvas.height);
-    var width = canvas.getAttribute('width');
-    var height = canvas.getAttribute('height');
-
-    var mouseX;
-    var mouseY;
-
     var bgImage = new Image();
-    var playImage = new Image();
-    var instructImage = new Image();
-    var settingsImage = new Image();
-    var creditsImage = new Image();
-    var playImage2= new Image();
-    var instructImage2 = new Image();
-    var settingsImage2 = new Image();
-    var creditsImage2 = new Image();
-    var ballImage = new Image();
-
-
-
-
-    var buttonX = [462, 380, 419, 430];
-    var buttonY = [100, 140, 180, 220];
-    var buttonWidth = [96, 260, 182, 160];
-    var buttonHeight = [40, 40, 40, 40];
-
-
-
-    creditsImage.src = "img/credits.png";
-    //settingsImage.src = "img/settings.png";
-    instructImage.src = "img/instructions.png";
-    playImage.src = "img/play.png";
-    creditsImage2.src = "img/credits2.png";
-   // settingsImage2.src = "img/settings2.png";
-    instructImage2.src = "img/instructions2.png";
-    playImage2.src = "img/play2.png";
-    bgImage.src = "img/c.jpg";
+    var playImage = new Image(96,40);
+    var instructImage = new Image(260,40);
+    var creditsImage = new Image(160,40);
+    var playImage2 = new Image(96,40);
+    var instructImage2 = new Image(260,40);
+    var creditsImage2 = new Image(160,40);
+    var volumeImage = new Image(50,50);
+    volumeImage.src = "img/icon/menu/volume.png";
+    creditsImage2.src = "img/icon/menu/credits2.png";
+    instructImage2.src = "img/icon/menu/instructions2.png";
+    playImage2.src = "img/icon/menu/play2.png";
+    bgImage.src = "img/icon/menu/background.png";
+    creditsImage.src = "img/icon/menu/credits.png";
+    instructImage.src = "img/icon/menu/instructions.png";
+    playImage.src ="img/icon/menu/play.png";
     bgImage.onload = function(){
         ctx.drawImage(bgImage, 0, 0);
-        ctx.drawImage(playImage, buttonX[0], buttonY[0]);
-        ctx.drawImage(instructImage, buttonX[1], buttonY[1]);
-        //ctx.drawImage(settingsImage, buttonX[2], buttonY[2]);
-        ctx.drawImage(creditsImage, buttonX[3], buttonY[2]);
+        ctx.drawImage(playImage,442,146);
+        ctx.drawImage(instructImage,360,192);
+        ctx.drawImage(creditsImage, 412,242);
     };
-
-
-
-    //var mySound = new sound("video-games-general-gaming-sounds-game-over.mp3");
-    //mySound.play();
-
-    canvas.addEventListener("mousemove", checkPos);
-    canvas.addEventListener("mouseup", checkClick);
-
-
-    draw();
-
-
-
-
-    function draw() {
-        ctx.drawImage(bgImage, 0, 0);
-        ctx.drawImage(playImage, buttonX[0], buttonY[0]);
-        ctx.drawImage(instructImage, buttonX[1], buttonY[1]);
-        //ctx.drawImage(settingsImage, buttonX[2], buttonY[2]);
-        ctx.drawImage(creditsImage, buttonX[3], buttonY[2]);
-
-    }
-
-    function checkPos(mouseEvent) {
-        if (mouseEvent.pageX || mouseEvent.pageY == 0) {
-            mouseX = mouseEvent.pageX - this.offsetLeft;
-            mouseY = mouseEvent.pageY - this.offsetTop;
-        } else if (mouseEvent.offsetX || mouseEvent.offsetY == 0) {
-            mouseX = mouseEvent.offsetX;
-            mouseY = mouseEvent.offsetY;
-        }
-
-    }
-
-    function checkClick(mouseEvent) {
-        for (var i = 0; i < buttonX.length; i++) {
-            if (mouseX > buttonX[i] && mouseX < buttonX[i] + buttonWidth[i]) {
-                if (mouseY > buttonY[i] && mouseY < buttonY[i] + buttonHeight[i]) {
-                    //console.log(mouseEvent);
-
-                    if(mouseY>100 && mouseY<140 ){
-                        canvas.removeEventListener("mousemove", checkPos);
-                        canvas.removeEventListener("mouseup", checkClick);
-                        ctx.clearRect(0,0,canvas.width,canvas.height);
-                        ctx.drawImage(playImage, buttonX[0], buttonY[0]);
-                        selectCharacter();
-                    }
-                    if(mouseY>140 && mouseY<180 ){
-                    canvas.removeEventListener("mousemove", checkPos);
-                    canvas.removeEventListener("mouseup", checkClick);
-                    ctx.clearRect(0,0,canvas.width,canvas.height);
-                      
-                    help(); 
-                    } 
-                    if(mouseY>180 && mouseY<220 ){
-                        canvas.removeEventListener("mousemove", checkPos);
-                        canvas.removeEventListener("mouseup", checkClick);
-                        ctx.clearRect(0,0,canvas.width,canvas.height);
-                    credits();
-                    }
-
-
-                }
+    canvas.addEventListener("mousemove", mouseHandler,false);
+    canvas.addEventListener("click", clkHandler,false);
+    function clkHandler(event) {
+        var relativeX = event.clientX - canvas.offsetLeft;
+        var relativeY = event.clientY - canvas.offsetTop;
+        if(relativeY>146 && relativeY< 146+40 && relativeX>442 && relativeX< 442+96) {
+            clickSound.play();
+            canvas.removeEventListener("click",clkHandler,false);
+            canvas.removeEventListener("mousemove",mouseHandler,false);
+            selectCharacter();
+        }else if(relativeY> 192&& relativeY<216 && relativeX>360 && relativeX<360+260){
+            clickSound.play();
+            canvas.removeEventListener("click",clkHandler,false);
+            canvas.removeEventListener("mousemove",mouseHandler,false);
+            help();
+        }else if(relativeY> 242&& relativeY< 242+40&& relativeX> 412&& relativeX<412+160){
+            clickSound.play();
+            canvas.removeEventListener("click",clkHandler,false);
+            canvas.removeEventListener("mousemove",mouseHandler,false);
+            credits();
+        }else if(relativeY>25 && relativeY<25+50 && relativeX>33 && relativeX<33+50){
+            if(menuSoundFlag==0) {
+                menuSound.pause();
+                menuSound.loop = false;
+                menuSoundFlag=1;
+            }else{
+                menuSound.play();
+                menuSound.loop = true;
+                menuSoundFlag=0;
             }
+
         }
     }
+    function mouseHandler(event) {
+        var relativeX = event.clientX - canvas.offsetLeft;
+        var relativeY = event.clientY - canvas.offsetTop;
+        if(relativeY>146 && relativeY< 146+40 && relativeX>442 && relativeX< 442+96) {
+            ctx.drawImage(playImage2,442,146);
+        }else if(relativeY> 192&& relativeY<216 && relativeX>360 && relativeX<360+260){
+            ctx.drawImage(instructImage2,360,192);
+        }else if(relativeY> 242&& relativeY< 242+40&& relativeX> 412&& relativeX<412+160){
+            ctx.drawImage(creditsImage2, 412,242);
+        }else if(relativeY>25 && relativeY<25+50 && relativeX>33 && relativeX<33+50){
+            ctx.drawImage(volumeImage, 32,23);
+        }else{
+            ctx.drawImage(bgImage, 0, 0);
+            ctx.drawImage(playImage,442,146);
+            ctx.drawImage(instructImage,360,192);
+            ctx.drawImage(creditsImage, 412,242);
+        }
+    }
+
 }
