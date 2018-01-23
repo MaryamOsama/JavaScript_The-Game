@@ -1,38 +1,9 @@
-Game Design Document {GDD)
+Game Design Document GDD)
 
 
 
 
 “4M-SMASH”
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -68,7 +39,7 @@ Introduction:
 Basically our game’s target audience is making a funny easy game for gamer children and also may be Adults.
 
 Story:
-The game starts by choosing one character from our characters (4M) and then you can start our interesting trip through our four levels.
+The game starts by choosing one character from our characters (4M) and then you can start our interesting trip.
 
 Characters:
 In our game we have four characters where each character could represent one of us:
@@ -78,28 +49,16 @@ In our game we have four characters where each character could represent one of 
 * The last one Maryam.
 
 Levels:
-The game has four levels you can choose any of them from the menu.
 
-Badges:
-:when you gain this badge your paddle expands.
-
-:when you take this badge your paddle shrinks.
-
-:when you take this badge you will lose live.
-
-
-Lives:
-:when you gain this heart you will take an extra live.
 
 Score:
-The score is managed by increasing a point by every touch to the brick.
-
-
+Badges:
+Lives:
 How to play the game?
 * Our game controller is very easy to control the slider right and left only your mouse movement right and left will handle this. 
 * The target is to get the ball always in the slider and keep trying to make the ball hit more bricks and gain more points in your score.
 
-
+Summary:
 
 
 
