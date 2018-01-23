@@ -100,8 +100,8 @@ GameProgress.prototype.init=function (){
     else if(this.level==3){
         this.lives=4;
         this.score=0;
-        this.dx=10;
-        this.dy=-10;
+        this.dx=5;
+        this.dy=-5;
         this.brickPadding=0;
         this.brickShape=[
             "                   ",
