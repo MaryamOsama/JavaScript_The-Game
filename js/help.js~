@@ -13,8 +13,6 @@ function help(){
 	}
     back2.src = 'img/arr.png'
     ctx.drawImage(back2, 0, 0);
-  
-   // back.src="img/icon/selectLevels/back.png";
     canvas.addEventListener("click", backClick); 
   
     function backClick(mouseEvent) {
@@ -29,9 +27,9 @@ function help(){
         canvas.removeEventListener("click", backClick);              
         displayMenu();
 	console.log(mouseEvent);
-        //clearInterval(timerId);
 
 
                 }
             }      
+}
 }

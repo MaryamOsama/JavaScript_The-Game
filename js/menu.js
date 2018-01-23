@@ -29,11 +29,11 @@ function displayMenu() {
 
 
     creditsImage.src = "img/credits.png";
-    settingsImage.src = "img/settings.png";
+    //settingsImage.src = "img/settings.png";
     instructImage.src = "img/instructions.png";
     playImage.src = "img/play.png";
     creditsImage2.src = "img/credits2.png";
-    settingsImage2.src = "img/settings2.png";
+   // settingsImage2.src = "img/settings2.png";
     instructImage2.src = "img/instructions2.png";
     playImage2.src = "img/play2.png";
     bgImage.src = "img/c.jpg";
@@ -41,8 +41,8 @@ function displayMenu() {
         ctx.drawImage(bgImage, 0, 0);
         ctx.drawImage(playImage, buttonX[0], buttonY[0]);
         ctx.drawImage(instructImage, buttonX[1], buttonY[1]);
-        ctx.drawImage(settingsImage, buttonX[2], buttonY[2]);
-        ctx.drawImage(creditsImage, buttonX[3], buttonY[3]);
+        //ctx.drawImage(settingsImage, buttonX[2], buttonY[2]);
+        ctx.drawImage(creditsImage, buttonX[3], buttonY[2]);
     };
 
 
@@ -63,8 +63,8 @@ function displayMenu() {
         ctx.drawImage(bgImage, 0, 0);
         ctx.drawImage(playImage, buttonX[0], buttonY[0]);
         ctx.drawImage(instructImage, buttonX[1], buttonY[1]);
-        ctx.drawImage(settingsImage, buttonX[2], buttonY[2]);
-        ctx.drawImage(creditsImage, buttonX[3], buttonY[3]);
+        //ctx.drawImage(settingsImage, buttonX[2], buttonY[2]);
+        ctx.drawImage(creditsImage, buttonX[3], buttonY[2]);
 
     }
 
@@ -92,11 +92,18 @@ function displayMenu() {
                         ctx.drawImage(playImage, buttonX[0], buttonY[0]);
                         selectCharacter();
                     }
-                    if(mouseY>220 && mouseY<260 ){
+                    if(mouseY>140 && mouseY<180 ){
+                    canvas.removeEventListener("mousemove", checkPos);
+                    canvas.removeEventListener("mouseup", checkClick);
+                    ctx.clearRect(0,0,canvas.width,canvas.height);
+                      
+                    help(); 
+                    } 
+                    if(mouseY>180 && mouseY<220 ){
                         canvas.removeEventListener("mousemove", checkPos);
                         canvas.removeEventListener("mouseup", checkClick);
                         ctx.clearRect(0,0,canvas.width,canvas.height);
-                        credits();
+                    credits();
                     }
 
 

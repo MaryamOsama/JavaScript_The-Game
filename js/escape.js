@@ -1,4 +1,5 @@
 
+
 function pause(){
     var pause=new Image(662,356);
     var homeIcon2=new Image(135,136);
@@ -60,3 +61,4 @@ function pause(){
 
 
 }
+

@@ -1,3 +1,4 @@
+
 function Badge(){
     this.badgeY=0;
     var badgeX, badgeY,badgeWidth, badgeHeight,badgeType,badgeImg,dx,dy;
@@ -38,6 +39,7 @@ Badge.prototype.init=function(badgeX,badgeY,badgeWidth,badgeHeight,badgeType) {
         this.badgeImg.src='img/badge4.png';
     }
 };
+
 
 
 

@@ -1,3 +1,4 @@
+
 function GameProgress(level) {
     this.level=level;
     var footerHeight;
@@ -136,5 +137,87 @@ GameProgress.prototype.init=function (){
         ];
         this.badgeSpeed=5;
     }
+
+
+    this.badgeX= -40;
+    this.badgeY=-40 ;
+    this.badgeWidth=40 ;
+    this.badgeHeight=40;
+    if(this.level==1){
+        this.lives=3;
+        this.score=0;
+        this.dx=5;
+        this.dy=-5;
+        this.brickPadding=10;
+        this.brickShape=[
+            "                   ",
+            "                   ",
+            "                   ",
+            "                   ",
+            "                   ",
+            "                   ",
+            "                   ",
+            "                   ",
+            "        1          ",
+        ];
+        this.badgeSpeed=5;
+    }else if(this.level==2){
+        this.lives=3;
+        this.score=0;
+        this.dx=5;
+        this.dy=-5;
+        this.brickPadding=5;
+        this.brickShape=[
+            "                   ",
+            "                   ",
+            "                   ",
+            "                   ",
+            "                   ",
+            "                   ",
+            "                   ",
+            "                   ",
+            "        1          ",
+        ];
+        this.badgeSpeed=5;
+    }
+    else if(this.level==3){
+        this.lives=3;
+        this.score=0;
+        this.dx=10;
+        this.dy=-10;
+        this.brickPadding=0;
+        this.brickShape=[
+            "                   ",
+            "                   ",
+            "                   ",
+            "                   ",
+            "                   ",
+            "                   ",
+            "                   ",
+            "                   ",
+            "        1          ",
+        ];
+        this.badgeSpeed=5;
+    }
+    else if(this.level==4){
+        this.lives=1;
+        this.score=0;
+        this.dx=10;
+        this.dy=-10;
+        this.brickPadding=0;
+        this.brickShape=[
+            "                   ",
+            "                   ",
+            "                   ",
+            "                   ",
+            "                   ",
+            "                   ",
+            "                   ",
+            "                   ",
+            "        1          ",
+        ];
+        this.badgeSpeed=5;
+    }
+
 
 };

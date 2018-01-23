@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 function win(level){
     var win=new Image(398,212);
     win.src="img/icon/win/win.png";

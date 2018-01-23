@@ -41,6 +41,8 @@ function selectLevel(character) {
             }
         }
         if(relativeX>45 && relativeX<45+70 && relativeY>24 && relativeY<24+44){
+            canvas.removeEventListener("click",clickHandler,false);
+                canvas.removeEventListener("mousemove",mouseMoveHandler,false);
             selectCharacter();
         }
 
